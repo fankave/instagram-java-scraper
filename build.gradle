@@ -55,6 +55,7 @@ dependencies {
     compile 'org.eclipse.persistence:org.eclipse.persistence.moxy:2.7.0'
     compile 'commons-beanutils:commons-beanutils:1.9.3'
     compileOnly 'org.projectlombok:lombok:1.16.18'
+    annotationProcessor 'org.projectlombok:lombok:1.16.18'
     testCompile 'junit:junit:4.11'
     testCompile 'org.assertj:assertj-core:3.8.0'
 }
