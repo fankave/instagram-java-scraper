@@ -30,7 +30,9 @@ import me.postaddict.instagram.scraper.request.parameters.LocationParameter;
 import me.postaddict.instagram.scraper.request.parameters.MediaCode;
 import me.postaddict.instagram.scraper.request.parameters.TagName;
 import me.postaddict.instagram.scraper.request.parameters.UserParameter;
+import okhttp3.Cookie;
 import okhttp3.FormBody;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -53,7 +55,7 @@ public class Instagram implements AuthenticatedInsta {
 
     protected Request withCsrfToken(Request request) {
     	return request.newBuilder()
-              .addHeader("X-CSRFToken", csrf_token)
+              .addHeader("X-CSRFToken", getCSRFToken())
               .addHeader("X-Instagram-AJAX", (rollout_hash.isEmpty() ? "1" : rollout_hash))
               .build();
     }
@@ -74,6 +76,15 @@ public class Instagram implements AuthenticatedInsta {
     
     private void getCSRFToken(ResponseBody body) throws IOException {
     	this.csrf_token=getToken("\"csrf_token\":\"",32,body.byteStream());
+    }
+    
+    private String getCSRFToken() {
+        for (Cookie cookie : this.httpClient.cookieJar().loadForRequest(HttpUrl.parse("https://www.instagram.com"))) {
+            if ("csrftoken".equals(cookie.name())) {
+                return cookie.value();
+            }
+        }
+        return csrf_token;
     }
     
     private void getRolloutHash(ResponseBody body){
