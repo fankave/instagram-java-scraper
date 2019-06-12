@@ -79,7 +79,7 @@ public class Instagram implements AuthenticatedInsta {
     }
     
     private String getCSRFToken() {
-        for (Cookie cookie : this.httpClient.cookieJar().loadForRequest(HttpUrl.parse("https://www.instagram.com"))) {
+        for (Cookie cookie : this.httpClient.cookieJar().loadForRequest(HttpUrl.parse(Endpoint.BASE_URL))) {
             if ("csrftoken".equals(cookie.name())) {
                 return cookie.value();
             }
@@ -354,5 +354,15 @@ public class Instagram implements AuthenticatedInsta {
         if(tag==null || tag.isEmpty() || tag.startsWith("#")){
             throw new IllegalArgumentException("Please provide non empty tag name that not starts with #");
         }
+    }
+
+    @Override
+    public Long getLoginUserId() {
+        for (Cookie cookie : this.httpClient.cookieJar().loadForRequest(HttpUrl.parse(Endpoint.BASE_URL))) {
+            if ("ds_user_id".equals(cookie.name())) {
+                return Long.parseLong(cookie.value());
+            }
+        }
+        return null;
     }
 }
