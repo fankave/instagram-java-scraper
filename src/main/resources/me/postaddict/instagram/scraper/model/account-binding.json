@@ -35,7 +35,8 @@
             {"java-attribute": "profilePicUrlHd", "type": "java.lang.String", "xml-path": "profile_pic_url_hd/text()"},
             {"java-attribute": "requestedByViewer", "type": "java.lang.Boolean", "xml-path": "requested_by_viewer/text()"},
             {"java-attribute": "connectedFbPage", "type": "java.lang.String", "xml-path": "connected_fb_page/text()"},
-            {"java-attribute": "media", "type": "me.postaddict.instagram.scraper.model.PageObject", "xml-path": "edge_owner_to_timeline_media"}
+            {"java-attribute": "media", "type": "me.postaddict.instagram.scraper.model.PageObject", "xml-path": "edge_owner_to_timeline_media"},
+            {"java-attribute": "isBusinessAccount", "type": "java.lang.String", "xml-path": "is_business_account/text()"}
           ]
         }
       },
