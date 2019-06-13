@@ -57,6 +57,8 @@ public class Instagram implements AuthenticatedInsta {
     	return request.newBuilder()
               .addHeader("X-CSRFToken", getCSRFToken())
               .addHeader("X-Instagram-AJAX", (rollout_hash.isEmpty() ? "1" : rollout_hash))
+              .addHeader("X-Requested-With", "XMLHttpRequest")
+              .addHeader("X-IG-App-ID", "936619743392459")
               .build();
     }
     
