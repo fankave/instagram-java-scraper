@@ -145,7 +145,7 @@ public class Instagram implements AuthenticatedInsta {
                 .build();
         Response response = executeHttpRequest(withCsrfToken(request));
         try(InputStream jsonStream = response.body().byteStream()) {
-            return getMediaByCode(mapper.getLastMediaShortCode(jsonStream)).getOwner();
+            return getAccountByUsername(getMediaByCode(mapper.getLastMediaShortCode(jsonStream)).getOwner().getUsername());
         }
     }
 
