@@ -120,11 +120,13 @@ public class Instagram implements AuthenticatedInsta {
         RequestBody formBody = new FormBody.Builder()
                 .add("username", username)
                 .add("password", password)
+                .add("queryParams", "{}")
+                .add("optIntoOneTap", "true")
                 .build();
 
         Request request = new Request.Builder()
                 .url(Endpoint.LOGIN_URL)
-                .header(Endpoint.REFERER, Endpoint.BASE_URL + "/")
+                .header(Endpoint.REFERER, Endpoint.BASE_URL + "/accounts/login/")
                 .post(formBody)
                 .build();
 
