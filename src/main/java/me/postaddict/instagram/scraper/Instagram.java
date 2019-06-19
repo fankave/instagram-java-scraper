@@ -133,7 +133,7 @@ public class Instagram implements AuthenticatedInsta {
         Response response = executeHttpRequest(withCsrfToken(request));
         try(InputStream jsonStream = response.body().byteStream()) {
             if(!mapper.isAuthenticated(jsonStream)){
-                throw new InstagramAuthException("Credentials rejected by instagram");
+                throw new InstagramAuthException("Credentials rejected by instagram", ErrorType.UNAUTHORIZED);
             }
         }
     }
