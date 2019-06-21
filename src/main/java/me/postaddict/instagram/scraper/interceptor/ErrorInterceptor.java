@@ -31,6 +31,8 @@ public class ErrorInterceptor implements Interceptor {
                         errorType = ErrorType.ACTION_BLOCKED;
                     } else if (bodyString.contains("checkpoint_required")) {
                         errorType = ErrorType.CHECKPOINT_REQUIRED;
+                    } else if (bodyString.contains("two_factor_required")) {
+                        errorType = ErrorType.TWO_FACTOR_REQUIRED;
                     }
                     throw new InstagramAuthException("Bad Request", errorType);
                 case 401:

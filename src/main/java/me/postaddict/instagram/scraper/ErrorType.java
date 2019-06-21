@@ -4,6 +4,8 @@ public enum ErrorType {
 
     CHECKPOINT_REQUIRED,
 
+    TWO_FACTOR_REQUIRED,
+
     UNAUTHORIZED,
 
     TEMPORARY_ACTION_BLOCKED,
