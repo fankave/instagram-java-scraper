@@ -2,6 +2,8 @@ package me.postaddict.instagram.scraper;
 
 public enum ErrorType {
 
+    CHECKPOINT_REQUIRED,
+
     UNAUTHORIZED,
 
     TEMPORARY_ACTION_BLOCKED,
