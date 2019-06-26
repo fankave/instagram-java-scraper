@@ -35,7 +35,7 @@ public class ErrorInterceptor implements Interceptor {
                     } else if (bodyString.contains("two_factor_required")) {
                         errorType = ErrorType.TWO_FACTOR_REQUIRED;
                     }
-                    throw new InstagramAuthException("Bad Request", errorType);
+                    throw new InstagramException("Bad Request", errorType);
                 case 401:
                     throw new InstagramAuthException("Unauthorized", ErrorType.UNAUTHORIZED);
                 case 403:
