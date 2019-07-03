@@ -48,6 +48,8 @@ public class ErrorInterceptor implements Interceptor {
                     throw new InstagramAuthException("Access denied", errorType);
                 case 404:
                     throw new InstagramNotFoundException("Resource does not exist", errorType);
+                case 429:
+                    throw new InstagramException("Rate limited", ErrorType.RATE_LIMITED);
                 case 502:
                     throw new InstagramException("Bad Gateway", ErrorType.INSTAGRAM_SERVER_ERROR);
                 default:
